@@ -76,6 +76,10 @@ func TestGini(t *testing.T) {
 					res, _ := g.Test(nil)
 					So(res, ShouldEqual, -1)
 					g.Untest()
+					// Untest removes assumptions since last test. In this case, -3 is removed.
+					res, _ = g.Test(nil)
+					So(res, ShouldNotEqual, -1)
+					g.Untest()
 				})
 			})
 
